@@ -1,0 +1,32 @@
+
+.menu-item{
+    border-bottom: 1px solid hsla(216, 2%, 59%, 0.20);
+    margin: 0 5px;
+}
+.menu-sub .menu-item:last-of-type {
+    border-bottom: none;
+    
+}
+.menu-item .menu-link .menu-title {
+    font-size: 1.3em !important;
+    font-weight: 400;
+    // color: #18448B;
+    margin: 0 .7em;
+}
+
+.activeLink{
+    color: #d8a244 !important;
+}
+.menu-title{
+    // color:#18448B !important;
+    font-weight: bold;
+}
+.menu-item .menu-link{
+    padding-right: 0 !important;
+}
+// .active{
+//     background-color: #d8a244;
+// }
+// .activeAccordion{
+//     border-right: 3px solid #18448B;
+// }

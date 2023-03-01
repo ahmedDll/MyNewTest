@@ -1,0 +1,38 @@
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+  <div class="mb-8 text-center">
+    <h2 class="h1 login__title text-uppercase ">log in</h2>
+  </div>
+
+  <div class="row">
+    <!-- begin email -->
+
+    <div class="col-md-12 mb-3">
+      <label for="email">User Name <span class="text-danger">*</span></label>
+      <input placeholder="User Name" id="email" class="form-control form-control-solid mt-2" formControlName="email"
+        [(ngModel)]="this._UserService.Vuser.username">
+      <div class="alert alert-danger my-3" *ngIf="email?.invalid && ( email?.dirty ||email?.touched)">
+        <p *ngIf="email?.errors?.required"> * البريد الالكتروني مطلوب </p>
+        <p *ngIf="email?.errors?.email"> * ادخل بيريد الكتروني صحيح </p>
+      </div>
+    </div>
+    <!-- End email -->
+    <!-- begin password -->
+    <div class=" col-md-12 mb-3 mt-5">
+      <label for="Password">Password <span class="text-danger">*</span></label>
+      <input type="password" id="Password" placeholder="Password" class="form-control form-control-solid mt-2"
+        formControlName="password" [(ngModel)]="this._UserService.Vuser.password">
+      <div class="alert alert-danger my-3" *ngIf="password?.invalid && ( password?.dirty ||password?.touched)">
+        <p *ngIf="password?.errors?.pattern || password?.errors?.required"> *الرقم السري مطلوب </p>
+      </div>
+    </div>
+    <!-- End password  -->
+    <div *ngIf="!trueLogin" class=" d-grid gap-2 mx-auto mt-5">
+      <button type="submit" class="fs-3 text-light btn btn-lg btn-custom mt-5">Log In</button>
+    </div>
+    <!-- <div *ngIf="trueLogin" class=" text-center">
+      <button class="fs-3 text-light btn btn-lg btn-custom  mt-5" (click)="Goo()">الذاهب الى لوحة التحكم</button>
+    </div> -->
+
+  </div>
+
+</form>

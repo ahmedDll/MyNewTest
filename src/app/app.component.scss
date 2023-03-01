@@ -1,0 +1,13 @@
+:host {
+  height: 100%;
+  margin: 0;
+}
+
+[dir="rtl"] {
+  direction:rtl !important;
+  text-align: right !important;
+}
+[dir="ltr"] {
+  direction:ltr !important;
+  text-align: left !important;
+}

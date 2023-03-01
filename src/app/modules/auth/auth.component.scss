@@ -1,0 +1,21 @@
+* {
+  font-family: 'Poppins';
+}
+
+.auth__component {
+  min-height: 100vh;
+  padding-top: 3em;
+
+  .loginForm {
+    background-color: #F5F8FD;
+    width: 93%;
+    margin: 0 auto;
+    padding: 4em;
+    border-radius: 2em;
+  }
+
+  .login__form {
+    background-color: #fff;
+    border-radius: 20px;
+  }
+}

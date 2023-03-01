@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" (click)="show()">
+            Add
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <ag-grid-angular #stationGrid style="width: 100%; height: 450px;" class="ag-theme-alpine" [columnDefs]="columnDefs"
+        [rowSelection]="rowSelection" animateRows (gridReady)="onGridReady($event)"
+        (rowDoubleClicked)="onrowDoubleClicked($event)" pagination></ag-grid-angular>
+</div>
+
+<ng-template #upsertForm>
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" [style.display]=" 'block'" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-capitalize" id="staticBackdropLabel">{{title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="hide()"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="stationForm" #StationF="ngForm" (ngSubmit)="onSubmit(StationF)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">{{"Station.Code" | translate}}</label>
+                                <input type="text" #stCode name="stCode"
+                                    [(ngModel)]="stationServices.istation.stationCode" class="form-control" required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="stCode?.invalid && (StationF.submitted|| stCode?.dirty ||stCode?.touched)">
+                                    <p *ngIf="stCode?.invalid||stCode.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">{{"Station.EnName" | translate}}</label>
+                                <input type="text" name="enName" #enName
+                                    [(ngModel)]="stationServices.istation.stationName" class="form-control" required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="enName?.invalid && (StationF.submitted|| enName?.dirty ||enName?.touched)">
+                                    <p *ngIf="enName?.invalid||enName.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">{{"Station.ArName" | translate}}</label>
+                                <input type="text" name="arName" #arName
+                                    [(ngModel)]="stationServices.istation.stationArabicName" class="form-control"
+                                    required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="arName?.invalid && (StationF.submitted|| arName?.dirty ||arName?.touched)">
+                                    <p *ngIf="arName?.invalid||arName.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="stationClass">Station Class</label>
+                                <select class="form-control" name="stationClass"
+                                    [(ngModel)]="stationServices.istation.classifficationCode">
+                                    <option *ngFor="let stationClass of istationClasses" [value]="stationClass.serial">
+                                        {{stationClass[translate.instant("StationClasses.StationClassColName")]}}
+                                    </option>
+                                </select>
+                                <!-- <label for="">{{"Station.Address" | translate}}</label>
+                                <input type="text" name="address" #address
+                                    [(ngModel)]="stationServices.istation.stationAdress" class="form-control" required>
+                                -->
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="showError && (!stationServices.istation.classifficationCode || stationServices.istation.classifficationCode == 0)">
+                                    <p>هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <label for="">{{"Station.Manager" | translate}}</label>
+                                <input type="text" name="manager" #manager
+                                    [(ngModel)]="stationServices.istation.stationManager" class="form-control" required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="manager?.invalid && (StationF.submitted|| manager?.dirty ||manager?.touched)">
+                                    <p *ngIf="manager?.invalid||manager.errors?.required">هذا الحقل مطلوب</p>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">
+                                Save
+                            </button>
+                            <button type="button" *ngIf="edit" (click)="deleteStation()" class="btn btn-danger">
+                                delete
+                            </button>
+                            <button type="button" (click)="hide()" class="btn btn-light">
+                                cancel
+                            </button>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

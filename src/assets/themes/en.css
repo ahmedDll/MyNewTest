@@ -1,0 +1,59 @@
+/****** start navbar ******/
+.body_En .navbar-nav.links {
+  margin-right: auto;
+}
+/* .body_En .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+  border-radius: .5em 0 0 .5em !important;
+
+}
+.body_En .btn-group>.btn-group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
+  border-radius: 0 .5em .5em 0 !important;
+} */
+/***** End navbar ******/
+
+/* start breadcrumb */
+.body_En .breadcrumb .home-icon {
+  left: -39px;
+}
+
+/****** End breadcrumb ******/
+
+/****** start sidebar direction ******/
+.body_En .nav {
+  left: -100%;
+
+}
+
+.body_En .sidebar .nav .nav__dropdown .nav__link i {
+  margin-right: 1em;
+}
+
+.body_En .sidebar .nav__dropdown .nav__link .nav__dropdown-icon.arrow {
+  margin-left: 1em;
+}
+
+@media screen and (min-width: 768px) {
+  .body_En .nav {
+    left: 0;
+
+  }
+}
+
+/****** End sidebar direction ******/
+/****** start home footer ******/
+.body_En .home__footer {
+  margin-left: auto;
+}
+
+/****** End home footer ******/
+/*start login */
+.login-content .input-div>div>h5 {
+  text-align: left;
+}
+
+/*End login */
+/****** start vacationApprove__component ******/
+/* .vacationApprove__component .Approve .backBtn i{
+  transform: rotate(360deg);
+} */
+/****** End vacationApprove__component ******/

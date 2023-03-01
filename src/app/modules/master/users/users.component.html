@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" (click)="show()">
+            Add
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <ag-grid-angular #eventGrid style="width: 100%; height: 450px;" class="ag-theme-alpine" [columnDefs]="columnDefs"
+        [rowSelection]="rowSelection" animateRows (gridReady)="onGridReady($event)"
+        (rowDoubleClicked)="onrowDoubleClicked($event)" pagination></ag-grid-angular>
+</div>
+
+<ng-template #upsertForm>
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" [style.display]=" 'block'" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-capitalize" id="staticBackdropLabel">{{title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="hide()"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="userForm" #userF="ngForm" (ngSubmit)="onSubmit(userF)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="userName">{{'INPUT.USERNAME' | translate}}</label>
+                                <input type="text" name="userName" id="userName"
+                                    [(ngModel)]="userService.iUser.userName" #userName="ngModel" class="form-control"
+                                    required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="userName?.invalid && (userF.submitted|| userName?.dirty ||userName?.touched)">
+                                    <p *ngIf="userName?.invalid||userName.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">{{'INPUT.EMAIL' | translate}}</label>
+                                <input type="email" name="email" id="email" email="true"
+                                    [(ngModel)]="userService.iUser.email" #email="ngModel" class="form-control"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="email?.invalid && (userF.submitted|| email?.dirty ||email?.touched)">
+                                    <p *ngIf="email?.invalid||email.errors?.required">هذا الحقل مطلوب</p>
+                                    <p *ngIf="email?.invalid||email.errors?.email"> هذا البريد الالكتروني غير صحيح.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="password">{{'INPUT.PASSWORD' | translate}}</label>
+                                <input type="password" name="password" id="password"
+                                    [(ngModel)]="userService.iUser.password" #password="ngModel" class="form-control"
+                                    [required]="!edit">
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="password?.invalid && (userF.submitted|| password?.dirty ||password?.touched)">
+                                    <p *ngIf="password?.invalid||password.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone">{{'INPUT.PHONE' | translate}}</label>
+                                <input type="phone" name="phone" id="phone" [(ngModel)]="userService.iUser.phone"
+                                    #phone="ngModel" class="form-control">
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="phone?.invalid && (userF.submitted|| phone?.dirty ||phone?.touched)">
+                                    <p *ngIf="phone?.invalid||phone.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="type">Groups</label>
+
+                                <select class="form-control" name="groups" (change)="groupChanged()"
+                                    [(ngModel)]="userService.iUser.type">
+                                    <option value="C">كاشير</option>
+                                    <option value="A">ادمن</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6" *ngIf="userService.iUser.type == 'C'">
+                                <label for="stationsModel">Stations</label>
+                                <select name="stations" class="form-control" #stationsModel="ngModel"
+                                    [(ngModel)]="userService.iUser.stationSerial">
+                                    <option *ngFor="let item of stations" [value]="item.serial">
+                                        {{item[translate.instant("Station.StationName")]}}</option>
+                                </select>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="stationsModel?.invalid && (userF.submitted|| stationsModel?.dirty ||stationsModel?.touched)">
+                                    <p *ngIf="stationsModel?.invalid||stationsModel.errors?.required">هذا الحقل
+                                        مطلوب</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">
+                                Save
+                            </button>
+                            <button type="button" *ngIf="edit" (click)="deleteEvent()" class="btn btn-danger">
+                                delete
+                            </button>
+                            <button type="button" (click)="hide()" class="btn btn-light">
+                                cancel
+                            </button>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/sass/style";
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+// Cairo font
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@font-face {
+  font-family: 'Cairo';
+  src: url(./assets/fonts/Cairo-Regular.ttf);
+  src: url(./assets/fonts/Cairo-Light.ttf);
+  src: url(./assets/fonts/Cairo-Black.ttf);
+  src: url(./assets/fonts/Cairo-ExtraBold.ttf);
+  src: url(./assets/fonts/Cairo-Bold.ttf);
+  src: url(./assets/fonts/Cairo-ExtraLight.ttf);
+  src: url(./assets/fonts/Cairo-SemiBold.ttf);
+  src: url(./assets/fonts/Cairo-Medium.ttf);
+
+}
+.ag-theme-alpine {
+  -webkit-font-smoothing: antialiased;
+  color: #000000;
+  font-family: 'Cairo';
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 500;
+}
+
+.modal-header .btn-close {
+  margin: 0;
+}
+
+
+
+
+body {
+  margin: 0;
+  font-family: Cairo;
+  // font-size: larger !important;
+  font-weight: 700;
+}
+
+button{
+  font-size: 2em;
+}
+.ag-theme-alpine .ag-header {
+  font-family: 'Cairo';
+}
+
+.ag-theme-alpine .ag-header-group-cell {
+  font-weight: normal;
+  font-size: 22px;
+}
+
+.ag-theme-alpine .ag-header-cell {
+  font-size: 15px;
+}
+
+.ag-theme-alpine {
+  --ag-header-height: 30px;
+  --ag-header-foreground-color: #000000aa;
+  --ag-header-background-color: var(--bs-light-dark);
+  --ag-header-cell-hover-background-color: #0000003b;
+  --ag-header-cell-moving-background-color: #0000000d;
+  --ag-border-color: #dee2e680;
+  --ag-secondary-border-color: #dee2e6;
+  --ag-alpine-active-color: #000000b3;
+  --ag-range-selection-border-color: #0000000d;
+  --ag-row-hover-color:rgba(0,0,0,.05);
+  --ag-selected-row-background-color:rgba(0,0,0,.08);
+}
+
+label{
+  font-size: larger;
+}
+input[disabled]:hover{
+  cursor: not-allowed;
+}

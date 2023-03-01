@@ -1,0 +1,188 @@
+<div class="row">
+    <div class="col-md-4">
+        <label for="startDate">{{"Event.StartDate" | translate}}</label>
+        <input class="form-control" [(ngModel)]="startDate" type="date" name="startDate" id="startDate" />
+    </div>
+    <div class="col-md-4">
+        <label for="endDate">{{"Event.EndDate" | translate}}</label>
+        <input class="form-control" [(ngModel)]="endDate" type="date" name="endDate" id="endDate" />
+    </div>
+    <div class="col-md-4">
+        <label for="eventCode">{{"Event.Events2" | translate}}</label>
+        <!-- <input class="form-control" [(ngModel)]="eventCode" type="text" name="eventCode" id="eventCode" /> -->
+        <ng-multiselect-dropdown #stationsModel="ngModel" [placeholder]="'select event'" [settings]="dropdownSettings"
+            [data]="ipromoEvents" [(ngModel)]="selectedPromoEvents" name="stations" (onSelect)="onItemSelect($event)"
+            (onDeSelect)="onItemDeselect($event)">
+        </ng-multiselect-dropdown>
+    </div>
+
+</div>
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <button class="btn btn-primary" (click)="fillGrid()">{{"Show" | translate}}</button>
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-success"
+                        (click)="export()">Export To Excel</button>
+    </div>
+</div>
+<div class="row">
+    <ag-grid-angular #eventGrid style="width: 100%; height: 450px;" class="ag-theme-alpine" [columnDefs]="columnDefs"
+        [rowSelection]="rowSelection" animateRows (gridReady)="onGridReady($event)"
+        [groupDefaultExpanded]="groupDefaultExpanded" [masterDetail]="true"
+        [detailCellRendererParams]="detailCellRendererParams" pagination></ag-grid-angular>
+</div>
+
+<ng-template #upsertForm>
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" [style.display]=" 'block'" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-capitalize" id="staticBackdropLabel">{{title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="hide()"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="eventForm" #eventF="ngForm">
+                        <div class="row" *ngIf="edit">
+                            <div class="col-md-6">
+                                <label for="">{{"Event.PromotionEventSerial" | translate}}</label>
+                                <input type="text" name="serial" #serial="ngModel"
+                                    [(ngModel)]="eventServices.ipromotionEvents.serial" disabled class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">{{"Event.Topic" | translate}}</label>
+                                <input type="text" name="eventTopic" #eventTopic="ngModel"
+                                    [(ngModel)]="eventServices.ipromotionEvents.eventTopic" class="form-control"
+                                    required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="eventTopic?.invalid && (eventF.submitted|| eventTopic?.dirty ||eventTopic?.touched)">
+                                    <p *ngIf="eventTopic?.invalid||eventTopic.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">{{"Event.TopicAR" | translate}}</label>
+                                <input type="text" name="eventDescription" #eventDescription="ngModel"
+                                    [(ngModel)]="eventServices.ipromotionEvents.eventDescription" class="form-control"
+                                    required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="eventDescription?.invalid && (eventF.submitted|| eventDescription?.dirty ||eventDescription?.touched)">
+                                    <p *ngIf="eventDescription?.invalid||eventDescription.errors?.required">هذا الحقل
+                                        مطلوب</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="startDate">{{"Event.StartDate" | translate}}</label>
+                                <input type="datetime-local" name="startDate" #startDate="ngModel"
+                                    [(ngModel)]="eventServices.ipromotionEvents.startDate" class="form-control"
+                                    required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="startDate?.invalid && (eventF.submitted|| startDate?.dirty ||startDate?.touched)">
+                                    <p *ngIf="startDate?.invalid||startDate.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="endDate">{{"Event.EndDate" | translate}}</label>
+                                <input type="datetime-local" name="endDate" #endDate="ngModel"
+                                    [(ngModel)]="eventServices.ipromotionEvents.endDate" class="form-control" required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="endDate?.invalid && (eventF.submitted|| endDate?.dirty ||endDate?.touched)">
+                                    <p *ngIf="endDate?.invalid||endDate.errors?.required">هذا الحقل مطلوب</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="maxParticipants">{{"Event.MaxParticipants" | translate}}</label>
+                                <input type="number" name="maxParticipants" #maxParticipants="ngModel"
+                                    [(ngModel)]="eventServices.ipromotionEvents.maxParticipants" class="form-control"
+                                    required>
+                                <div class="alert alert-danger my-1"
+                                    *ngIf="maxParticipants?.invalid && (eventF.submitted|| maxParticipants?.dirty ||maxParticipants?.touched)">
+                                    <p *ngIf="maxParticipants?.invalid||maxParticipants.errors?.required">هذا الحقل
+                                        مطلوب</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="stations">
+                                    Stations
+                                </label>
+                                <!-- <ng-multiselect-dropdown #stationsModel="ngModel" [placeholder]="'select stations'"
+                                    [settings]="dropdownSettings" [data]="stations" [(ngModel)]="selectedStations"
+                                    name="stations" (onSelect)="onItemSelect($event)"
+                                    (onDeSelect)="onItemDeselect($event)" (onDeSelectAll)="onDeselectAll($event)"
+                                    (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown> -->
+                                <input type="text" class="form-control" name="searchClasses" id="searchClasses"
+                                    #searchClasses placeholder="search station class"
+                                    (keyup)="filterClasses(searchClasses.value)">
+                                <ul class="list-group" id="stationsGroup">
+                                    <li class="list-group-item" *ngFor="let stClass of ifilteredStationClasses">
+                                        <input type="checkbox" name="class{{stClass.serial}}"
+                                            id="class_{{stClass.serial}}"
+                                            (change)="classSelected($event,stClass.serial)">
+                                        {{stClass[translate.instant("StationClasses.StationClassColName")]}}
+                                        <ul class="list-group">
+                                            <li class="list-group-item"
+                                                *ngFor="let st of filteredStations(stClass.serial)">
+
+                                                <input disabled *ngIf="isChecked(st.serial)" type="checkbox"
+                                                    (change)="stationSelected(st.serial,$event)"
+                                                    name="station{{st.serial}}" id="station_{{st.serial}}"
+                                                    [checked]="isChecked(st.serial)">{{st[translate.instant("Station.StationName")]}}
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!-- <div class="alert alert-danger my-1"
+                                    *ngIf="stationsModel?.invalid && (eventF.submitted|| stationsModel?.dirty ||stationsModel?.touched)">
+                                    <p *ngIf="stationsModel?.invalid||stationsModel.errors?.required">هذا الحقل
+                                        مطلوب</p>
+                                </div> -->
+                                <!-- <div *ngFor="let station of stations">
+                                    <input type="checkbox" class="stations"
+                                        (change)="stationSelected(station.serial,$event)">
+                                    {{
+                                    station[translate.instant("Station.StationName")]}}
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"
+                                *ngIf="eventServices.ipromotionEvents.serial && eventServices.ipromotionEvents.serial!=0">
+                                <a class="btn btn-primary"
+                                    href="https://www.besttopsystems.net:59990/Details/{{eventServices.ipromotionEvents.serial}}"
+                                    target="_blank">
+                                    Show Promo
+                                </a>
+                                <a class="btn btn-primary" (click)="copyToClipboard()">copy</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary" (click)="showDetails()">
+                                        Add Details
+                                    </button>
+                                </div>
+                            </div>
+                            <ag-grid-angular #eventDetailsGrid style="width: 100%; height: 450px;"
+                                class="ag-theme-alpine" [columnDefs]="detailsColumnDefs" [rowSelection]="rowSelection"
+                                animateRows (gridReady)="ondetailsGridReady($event)"
+                                (rowDoubleClicked)="onDetailsrowDoubleClicked($event)" pagination></ag-grid-angular> -->
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

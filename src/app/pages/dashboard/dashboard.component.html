@@ -1,0 +1,317 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <div class="dashboard__card">
+
+      <div class=" sales d-flex">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <i class="fal fa-user-friends"></i>
+        </div>
+        <div class="card__content">
+          <h3 class="title ">مبيعات</h3>
+          <span class="statistics mb-0">{{_UserService._Idashboard.sinvoice}}</span>
+          <small class="date">{{date}}</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="dashboard__card">
+
+      <div class=" purchases d-flex">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <i class="fal fa-shopping-bag"></i>
+        </div>
+        <div class="card__content">
+          <h3 class="title ">مشتريات</h3>
+          <span class="statistics mb-0">{{_UserService._Idashboard.pinvoice}}</span>
+          <small class="date">{{date}}</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="dashboard__card">
+
+      <div class="uers d-flex">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <i class="fal fa-user-friends"></i>
+        </div>
+        <div class="card__content">
+          <h3 class="title ">اصناف وصلت حد الطلب</h3>
+          <span class="statistics mb-0">{{_UserService._Idashboard.demandlimit}}</span>
+          <small class="date">{{date}}</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="dashboard__card">
+
+      <div class="companies d-flex">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <i class="fal fa-city"></i>
+        </div>
+        <div class="card__content">
+          <h3 class="title ">الشركات</h3>
+          <span class="statistics mb-0">1400</span>
+          <small class="date">{{date}}</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 ">
+    <div class="chart">
+
+      <div class="card">
+        <div class="card-body px-1">
+          <h6 class="card-title px-3">فواتير المبيعات</h6>
+          <div class="position-relative">
+            <apx-chart [series]="cloudStorageChartOptions.series" [chart]="cloudStorageChartOptions.chart"
+              [colors]="cloudStorageChartOptions.colors" [plotOptions]="cloudStorageChartOptions.plotOptions"
+              [fill]="cloudStorageChartOptions.fill" [stroke]="cloudStorageChartOptions.stroke"
+              [labels]="cloudStorageChartOptions.labels"></apx-chart>
+            <div class="pie-labels ">
+              <p>معلقه <span class="d-block">{{_UserService._Idashboard.sNotCsales}}</span></p>
+              <hr>
+              <p>متاخره <span class="d-block">{{_UserService._Idashboard.slateCsales}}</span></p>
+            </div>
+          </div>
+
+          <div class="row mb-3 footer-pie-labels px-3">
+            <div class="col-12 mb-2">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4 rounded-circle " style="background-color:#1E4D98;"></span>
+                  فواتير معلقه
+                </label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4 rounded-circle " style="background-color: #3D79D9;"></span>
+                  فواتير معلقه</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="chart">
+      <div class="card">
+        <div class="card-body px-0">
+          <h6 class="card-title px-3">فواتير المشتريات</h6>
+          <div class="position-relative">
+            <apx-chart [series]="cloudStorageChartOptions.series" [chart]="cloudStorageChartOptions.chart"
+              [colors]="cloudStorageChartOptions.colors" [plotOptions]="cloudStorageChartOptions.plotOptions"
+              [fill]="cloudStorageChartOptions.fill" [stroke]="cloudStorageChartOptions.stroke"
+              [labels]="cloudStorageChartOptions.labels"></apx-chart>
+            <div class="pie-labels">
+              <p>معلقه <span class="d-block">14000</span></p>
+              <hr>
+              <p>متاخره <span class="d-block">14000</span></p>
+            </div>
+          </div>
+
+          <div class="row mb-3 footer-pie-labels px-3">
+            <div class="col-12 mb-2">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4 rounded-circle " style="background-color:#8EB1EC;"></span>
+                  فواتير معلقه
+                </label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4 rounded-circle " style="background-color: #18448B;"></span>
+                  فواتير معلقه</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="chart">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title"> الايرادات والمصروفات</h6>
+          <apx-chart [series]="barChartOptions.series" [chart]="barChartOptions.chart" [colors]="barChartOptions.colors"
+            [grid]="barChartOptions.grid" [xaxis]="barChartOptions.xaxis" [yaxis]="barChartOptions.yaxis"
+            [plotOptions]="barChartOptions.plotOptions" [legend]="barChartOptions.legend"
+            [dataLabels]="barChartOptions.dataLabels"></apx-chart>
+          <div class="row mb-3 footer-line-labels my-4">
+            <div class="col-2">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color:#0C2246;"></span>
+                  الايرادات
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color: #8EB1EC;"></span>
+                  المصروفات
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="chart">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h6 class="card-title"> العملاء</h6>
+            <div class="d-flex ">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">يوميا</label>
+
+              </div>
+              <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">شهريا</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+
+              </div>
+              <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">اسبوعيا</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+
+              </div>
+            </div>
+          </div>
+          <apx-chart [series]="lineChartOptions.series" [chart]="lineChartOptions.chart"
+            [colors]="lineChartOptions.colors" [grid]="lineChartOptions.grid" [xaxis]="lineChartOptions.xaxis"
+            [yaxis]="lineChartOptions.yaxis" [markers]="lineChartOptions.markers" [legend]="lineChartOptions.legend"
+            [stroke]="lineChartOptions.stroke"></apx-chart>
+
+          <div class="row mb-3 footer-line-labels my-4">
+            <div class="col-4">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color:#0C2246;"></span>
+                  فواتير مستحقه
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color: #8EB1EC;"></span>
+                  فواتير دفعت
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color: #E7EEFB;"></span>
+                  فواتير انشئت"</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="chart">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between">
+            <h6 class="card-title"> الموردين</h6>
+            <div class="d-flex ">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">يوميا</label>
+
+              </div>
+              <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">شهريا</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+
+              </div>
+              <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">اسبوعيا</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+
+              </div>
+            </div>
+          </div>
+          <apx-chart [series]="lineChartOptions.series" [chart]="lineChartOptions.chart"
+            [colors]="lineChartOptions.colors" [grid]="lineChartOptions.grid" [xaxis]="lineChartOptions.xaxis"
+            [yaxis]="lineChartOptions.yaxis" [markers]="lineChartOptions.markers" [legend]="lineChartOptions.legend"
+            [stroke]="lineChartOptions.stroke"></apx-chart>
+
+          <div class="row mb-3 footer-line-labels my-4">
+            <div class="col-4">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color:#0C2246;"></span>
+                  فواتير مستحقه
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color: #8EB1EC;"></span>
+                  فواتير دفعت
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div>
+                <label class="d-flex align-items-center tx-10 text-uppercase fw-bold">
+                  <span class=" ms-4  " style="background-color: #E7EEFB;"></span>
+                  فواتير انشئت"</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="chart">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title"> أعلي 5 عملاء عليهم مستحقات</h6>
+
+          <!-- <apx-chart
+          [series]="chartOptions.series"
+          [colors]="chartOptions.colors"
+          [chart]="chartOptions.chart"
+          [dataLabels]="chartOptions.dataLabels"
+          [plotOptions]="chartOptions.plotOptions"
+          [xaxis]="chartOptions.xaxis"
+          [yaxis]="chartOptions.yaxis"
+          [annotations]="chartOptions.annotations"
+        ></apx-chart> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

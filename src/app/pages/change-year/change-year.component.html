@@ -1,0 +1,42 @@
+<form class=" col-12" [formGroup]="loginForm" >
+
+    <div class="col-md-6 mb-2">
+      <strong  for="branchCode">
+        <strong class="badge badge-pill badge-light">  السنة  </strong>
+      </strong>
+       <span class="text-danger">*</span>
+       <select  class="form-select"  name="Year" id="Year" formControlName="Year" [(ngModel)]="this.YEars"
+  
+  
+  
+       >
+       <option value=0> اختار</option>
+       <option *ngFor="let option of getYears" value={{option.subLdgTypeCode}}>
+         {{option.subLdgTypeCode}}
+       </option>
+  
+     </select>
+    </div>
+    <div  class=" text-center" >
+      <button class="btn btn-lg btn-primary btn-xl" (click)="ChangeYear()">تغيير السنة المالية</button>
+    </div>
+    <div class="col-md-6 mb-2">
+      <strong  for="branchCode">
+        <strong class="badge badge-pill badge-light">  الفرع  </strong>
+      </strong>
+       <span class="text-danger">*</span>
+       <select  class="form-select"  name="branchCode" id="branchCode" formControlName="branchCode" [(ngModel)]="this.BranchCode"
+  
+  
+       >
+       <option value=0> اختار</option>
+       <option *ngFor="let option of getBranch" value={{option.branchCode}}>
+         {{option.branchAraName}}
+       </option>
+  
+     </select>
+    </div>
+    <div  class=" text-center" >
+      <button class="btn btn-lg btn-primary btn-xl" (click)="ChangeBranchCode()">تغيير  الفرع</button>
+    </div>
+  

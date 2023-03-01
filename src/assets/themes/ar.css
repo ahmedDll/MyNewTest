@@ -1,0 +1,66 @@
+.body_Ar {
+  text-align: right;
+}
+/* .body_Ar .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0 .5em .5em 0 !important;
+}
+.body_Ar .btn-group>.btn-group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
+  border-radius: .5em 0 0 .5em !important;
+} */
+/****** start breadcrumb ******/
+.body_Ar .breadcrumb .home-icon {
+  right: -39px;
+}
+
+.breadcrumb li:first-child {
+  margin-right: 2em;
+}
+
+/****** End breadcrumb ******/
+
+
+/****** start navbar ******/
+.body_Ar .navbar-nav.links {
+  margin-left: auto;
+}
+
+/****** End navbar ******/
+
+
+/****** start sidebar direction ******/
+.body_Ar .nav {
+  right: -100%;
+}
+
+.body_Ar .sidebar .nav .nav__dropdown .nav__link i {
+  margin-left: 1em;
+}
+.body_Ar .sidebar .nav__dropdown .nav__link .nav__dropdown-icon.arrow {
+    margin-right: 1em;
+}
+@media screen and (min-width: 768px) {
+  .body_Ar .nav {
+    right: 0;
+  }
+}
+
+/****** End sidebar direction ******/
+
+
+/****** start home footer ******/
+.body_Ar .home__footer {
+  margin-right: auto;
+}
+
+/****** End home footer ******/
+/*start login */
+.login-content .input-div>div>h5 {
+  text-align: right;
+}
+
+/* End login */
+/****** start vacationApprove__component ******/
+  /* .vacationApprove__component .Approve .backBtn i{
+    transform: rotate(180deg);
+  } */
+/****** End vacationApprove__component ******/

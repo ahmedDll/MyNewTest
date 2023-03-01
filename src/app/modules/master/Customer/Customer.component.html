@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-6">
+        <input class="form-control" type="text" id="filter-text-box" placeholder="بحث ..."
+        (input)="onFilterTextBoxChanged()" />
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-success"
+                        (click)="export()">Export To Excel</button>
+    </div>
+</div>
+
+<div class="row" style="padding:20px;">
+<div class="col-md-12"
+style="width: 100%; height: 20px; border-bottom: 2px solid black; text-align: center">
+<span style=" background-color: #F3F5F6;">
+    {{"Customer.report" | translate}}
+  
+  <!--Padding is optional-->
+</span>
+</div>
+</div>
+<div class="row"></div>
+<br><br>
+<div class="row">
+    <ag-grid-angular #stationGrid style="width: 100%; height: 450px;" class="ag-theme-alpine" [columnDefs]="columnDefs"
+        [rowSelection]="rowSelection" animateRows (gridReady)="onGridReady($event)"
+         pagination></ag-grid-angular>
+</div>
+

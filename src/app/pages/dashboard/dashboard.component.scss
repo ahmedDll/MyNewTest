@@ -1,0 +1,103 @@
+.dashboard__card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1em 2em;
+    .icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    padding: 2%;
+    margin: 0 1em;
+    
+    i {
+      font-size: 1.5em;
+      color: #fff;
+    }
+  }
+  .sales .icon{
+    background-color: #0C2246;
+    
+  }
+  .purchases .icon{
+    background-color: #3F7CDE;
+  }
+  .uers .icon{
+    background-color: #8EB1EC
+    ;
+  }
+  .companies .icon{
+    background-color: rgba(24, 68, 140, 0.75);
+  }
+  .card__content{
+    h3{
+        font-weight: 700;
+    }
+    .statistics{
+        display: block;
+        color: #0C2246;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+    small{
+        color: #0000005f;
+    }
+  }
+}
+
+
+    .chart{
+      border-radius: 10px;
+        background-color: #fff;
+        margin-top: 3rem;
+        .pie-labels{
+          position: absolute;
+          top: 28%;
+          left: 4.5rem;
+          width: 8rem;
+          text-align: center;
+          p{
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+            margin: 0;
+            span{
+              color: #0C2246;
+              font-weight: bold;
+              font-size: 16px;
+
+            }
+          }
+          hr{
+            margin: 8px;
+          }
+        }
+        .footer-pie-labels{
+          label{
+            font-size: 14px;
+          }
+          span{
+            padding: 0.34rem;
+          }
+        }
+        .footer-line-labels{
+          label{
+            font-size: 14px;
+          }
+          span{
+            padding: 0.34rem;
+          }
+        }
+    }
+    .form-check .form-check-input {
+      float: right;}
+      .form-check .form-check-label {
+        margin-right: 4rem;
+        font-size: 12px;
+      }
+      .form-switch {
+        padding-left: 0.75rem;
+    }
+    .form-switch .form-check-input {
+      width: 2.8rem;
+      height: 1.4rem;
+      margin-top: 3px;
+      margin-right: 12px;}

@@ -1,0 +1,168 @@
+<!-- <div class="menu-item">
+    <div class="menu-content pt-8 pb-2">
+        <span class="menu-section text-muted text-uppercase fs-8 ls-1">
+      <h2>القائمة الرئيسية</h2></span>
+    </div>
+</div> -->
+<!-- End Accounts -->
+
+<!-- start Master Data -->
+<div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="activeAccordion">
+    <div class="menu-link">
+        <span class="menu-icon">
+            <span class="svg-icon svg-icon-2" [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'"> </span>
+        </span>
+        <span class="menu-title"> {{"MENU.MasterData" | translate}}</span>
+        <span class="menu-arrow"></span>
+    </div>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+            <!-- <div *ngIf="getchidList(subprog.progId).length==0">
+                <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="subprog.url">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{subprog.latinName| translate}}</span></a>
+            </div> -->
+            <div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink" [routerLink]="'./master/Stations'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">{{"Station.Stations" | translate}}</span></a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink"
+                        [routerLink]="'./master/StationsClasses'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">{{"StationClasses.StationsClasses" | translate}}</span></a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink" [routerLink]="'./master/Users'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">{{"Users.Users" | translate}}</span></a>
+                </div>
+
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink" [routerLink]="'./master/Employee'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">الموظفين</span></a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink" [routerLink]="'./master/MemberShip'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">موقف العضويه</span></a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink" [routerLink]="'./master/MainSub'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title"> المجموعات الرئيسية والفرعيه</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Master Data -->
+<!-- Start Transactions-->
+<div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="activeAccordion">
+    <div class="menu-link">
+        <span class="menu-icon">
+            <span class="svg-icon svg-icon-2" [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'"> </span>
+        </span>
+        <span class="menu-title"> {{"MENU.Transactions" | translate}} </span>
+        <span class="menu-arrow"></span>
+    </div>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+            <!-- <div *ngIf="getchidList(subprog.progId).length==0">
+                <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="subprog.url">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{subprog.latinName| translate}}</span></a>
+            </div> -->
+            <div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink" [routerLink]="'./master/Events'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">{{"Event.Events" | translate}}</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="activeAccordion">
+    <div class="menu-link">
+        <span class="menu-icon">
+            <span class="svg-icon svg-icon-2" [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'"> </span>
+        </span>
+        <span class="menu-title"> {{"MENU.Report" | translate}} </span>
+        <span class="menu-arrow"></span>
+    </div>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+
+            <div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink" [routerLink]="'./master/Customer'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">{{"Customer.report" | translate}}</span></a>
+                </div>
+
+            </div>
+        </div>
+        <div class="menu-item">
+
+            <div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink"
+                        [routerLink]="'./master/PromotionsSummaryDashboard'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">{{"Event.Report" | translate}}</span></a>
+                </div>
+
+            </div>
+            <div>
+                <div class="menu-item">
+                    <a class="menu-link without-sub" routerLinkActive="activeLink"
+                        [routerLink]="'./master/PromotionsDetailedDashboard'">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-title">{{"Event.TransactionReport" | translate}}</span></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Transactions-->
+<!-- Start tools-->
+<div class="menu-item menu-accordion" data-kt-menu-trigger="click" routerLinkActive="activeAccordion">
+    <div class="menu-link">
+        <span class="menu-icon">
+            <span class="svg-icon svg-icon-2" [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'"> </span>
+        </span>
+        <span class="menu-title"> {{"MENU.Tools" | translate}} </span>
+        <span class="menu-arrow"></span>
+    </div>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+        <div class="menu-item">
+            <!-- <div *ngIf="getchidList(subprog.progId).length==0">
+                <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="subprog.url">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{subprog.latinName| translate}}</span></a>
+            </div> -->
+            <div>
+                <div class="menu-item">
+                    <a (click)="Chngelang()" class="menu-link px-5 cursor-pointer">
+                        <span class="menu-bullet"> <i class="material-icons">language</i>
+                        </span>
+                        <span class="menu-title">{{"Tools.Language" | translate}}</span></a>
+                </div>
+                <div class="menu-item">
+                    <a (click)="islogout()" class="menu-link px-5 cursor-pointer">
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{"Tools.SignOut" | translate}}</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End tools-->
